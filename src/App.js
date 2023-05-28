@@ -15,9 +15,9 @@ class User extends Component {
   };
 
   clickMenus = () => {
-    this.setState((prevState) => ({
-      counter: prevState.counter - 1,
-    }));
+    this.setState({
+      counter: 0,
+    })
   };
   
   clickReset = () => {
@@ -44,7 +44,7 @@ class User extends Component {
               Deinkrement
             </button>
             <button onClick={this.clickReset} className="btn btn-info">
-              Reset
+              Restart
             </button>
             <p>{this.state.counter}</p>
           </div>
