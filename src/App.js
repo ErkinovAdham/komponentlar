@@ -4,7 +4,8 @@ class User extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      counter: 10,
+      counter: 0,
+      age: "",
     };
   }
 
@@ -15,25 +16,32 @@ class User extends Component {
   };
 
   clickMenus = () => {
+    this.setState((prevState) => ({
+      counter: prevState.counter - 1,
+    }));
+  };
+
+  clickReset = () => {
     this.setState({
       counter: 0,
-    })
+    });
   };
-  
-  clickReset = () => {
-    this.setState((prevState) => ({
-      counter: prevState.counter = 0,
-    }));
+
+  ChangeHandler = (e, name) => {
+    this.setState({
+      age: e.target.value,
+    });
   };
 
   render() {
     const { firstName, lastName, link } = this.props;
-
+    const { age, counter} = this.state
     return (
       <div className="w-50 mx-auto">
         <div className="border p-3 mt2">
           <h4>
-            Mening ismim = {firstName}, sharifim = {lastName}
+            Mening ismim = {firstName}, sharifim = {lastName}, yoshim ={age}
+           
           </h4>
           <a href={link}>Youtube kanalim</a>
           <div className="mt-3">
@@ -46,8 +54,16 @@ class User extends Component {
             <button onClick={this.clickReset} className="btn btn-info">
               Restart
             </button>
-            <p>{this.state.counter}</p>
+            <p>{counter}</p>
           </div>
+          <form action="">
+            <span>Yoshingiz</span>
+            <input
+              type="text"
+              className="form-control"
+              onChange={e => this.ChangeHandler(e, "Adham")}
+            />
+          </form>
         </div>
       </div>
     );
